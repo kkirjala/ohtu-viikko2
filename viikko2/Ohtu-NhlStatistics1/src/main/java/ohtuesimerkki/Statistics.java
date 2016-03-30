@@ -8,9 +8,15 @@ import java.util.List;
 public class Statistics {
 
     private List<Player> players;
+    private Reader reader;
 
-    public Statistics() {
-        PlayerReader reader = new PlayerReader("http://nhlstatistics.herokuapp.com/players.txt");
+    public Statistics(Reader reader) {
+        
+        // making this more modular for dependency injection
+        // Reader reader = new PlayerReader("http://nhlstatistics.herokuapp.com/players.txt");
+        
+        this.reader = reader;        
+        
         players = reader.getPlayers();       
     }
 
